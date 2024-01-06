@@ -1,0 +1,7 @@
+id=64ttl
+name=64ttl
+version=v1
+versionCode=1
+author=usastoe
+description=Change TTL on startup to 64
+minMagisk=17000
