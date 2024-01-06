@@ -1,0 +1,23 @@
+name: CI
+on:
+  push:
+    branches: "**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: CI
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: zip module
+        run: zip -r -0 ttl64.zip ./*
+      - name: Create Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./ttl64.zip
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "64zip"
+          prerelease: false
